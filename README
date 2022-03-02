@@ -1,0 +1,63 @@
+Copyright 2021 Paris Cristian-Tanase 321CAb
+
+
+
+Task1
+-->Reducerea folosita: (N-Coloring to SAT)
+
+-->Explicatii:
+		Rezolvarea incepe prin citirea si stocarea datelor initiale intr-o lista de adiacenta (Complexitate O(n)).
+		Urmatorul pas este reprezentat de generarea clauzelor, pe care le-am impartit in trei tipuri (Short, Long and Exclusion).
+	Clauzele short si long sunt generate in complexitate O(n^2), care in combinatie cu for-ul care apeleaza functiile de
+	constructie, duce la o complexitate totala O(n^3). Clauzele de excludere sunt generate in complexitate O(n), care in 
+	combinatie cu for-ul care apeleaza functia de constructie, duce la o complexitate totala de O(n^2).
+		Odata primit raspunsul de la oracol, descifrarea se realizeaza in O(n), iar raspunsul final este scris in fisier.
+
+
+Task2
+-->Reducerea folosita: (Clique of size K to SAT)
+	
+-->Explicatii:
+		Rezolvarea incepe prin citirea si stocarea datelor initiale intr-o matrice de adiacenta (Complexitate O(n)).
+		Urmatorul pas este reprezentat de generarea clauzelor, pe care le-am impartit in trei tipuri (Shor, Long and Exclusion).
+	Clauzele long sunt generate in complexitate O(n), cele scurte si cele de excludere in complexitate O(n^2). La acestea se
+	mai inmultesc for-urile care apeleaza metodele si dau complexitatile finale. Parcurgerea matricei se realizeaza in O(n^2).
+		Odata primit raspunsul de la oracol, descifrarea se realizeaza in O(n), iar raspunsul final este scris in fisier.
+
+
+Task3
+-->Reducerea folosita: (Minimum Vertex Cover to SAT)
+
+-->Explicatii:
+		Rezolvarea incepe prin citirea si stocarea datelor initiale intr-o matrice de adiacenta (Complexitate O(n)).
+		Urmatorul pas este reprezentat de reducerea problemei actuale la un input pentru task-ul 2. Mai exact,
+	incepem prin generarea matricei complementare pentru graful din input (complexitate O(n^2)) si apelarea multipla
+	intr-o bucla de complexitate O(n) a task-ului 2 pana obtinem raspunsul bun. Conversia inputului pentru task-ului 3
+	intr-un input pentru task-ul 2 ia O(n^2). De ce efectuam acesti pasi? Problema task-ului 3 in sine este Minimum
+	Vertex Cover, care este complementara problemei clicii. Daca generam matricea complementara(matricea non-relatiilor) 
+	si apelam succesiv task-ul 2 pe aceasta matrice pentru a gasi clica maxima, atunci nodurile care nu se afla in raspunsul
+	dat de task-ul 2 reprezinta un set minim de noduri care acopera toate laturile grafului.
+		Descifrarea finala a raspunsului ia O(n).
+
+
+
+Task4
+Reducerea folosita: (Minimum Weight Vertex Cover to SAT)
+		Rezolvarea incepe prin citirea si stocarea datelor initiale intr-o lista de adiacenta (Complexitate O(n)).
+		Atat pentru clauzele soft cat si hard, generarea ia complexitate O(n). La inceputul fiecarei linii, asociem o "greutate"
+	clauzei respective (1 pentru cele soft, si (numarDeNoduri + 1) pentru cele hard). In cazul bonusului, nu mai este nevoie
+	sa apelam alt task, intrucat apelam o singura data oracolul folosind scrierea cu greutati, ceea ce duce la o optimizare
+	a gasirii raspunsului.
+		Descifrarea raspunsului ia O(n).
+
+
+
+Notes:
+	Metoda append a clasei StringBuilder are complexitate O(n).
+
+Nota autorului:
+	Sper sa fi calculat cat de cat OK complexitatile, nu sunt sigur chiar de toate, in unele cazuri, amoritzat se poate
+	sa dea mai bine decat este mentionat mai sus, intrucat si timpii de rulare pe care ii am sunt foarte buni pe local.
+
+Nota autorului 2:
+	Super tema!!! 	
